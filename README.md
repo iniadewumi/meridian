@@ -109,6 +109,13 @@ npm run dev
 ```
 Open http://localhost:3000
 
+### One-command start (recommended for non-technical users)
+```bash
+npm run easy-start
+```
+
+See `REQUIREMENTS.md` for prerequisites, environment variables, and the full package list.
+
 ### Type Checking
 ```bash
 npm run type-check

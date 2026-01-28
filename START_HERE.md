@@ -67,6 +67,14 @@
 
 ## 🏃 Quick Start (2 Minutes)
 
+### One-command start (recommended)
+```bash
+npm run easy-start
+```
+
+This will auto-create `.env.local` (from `.env.example`) and install packages if needed.
+See `REQUIREMENTS.md` for prerequisites and the full package list.
+
 ### 1. Install Dependencies
 ```bash
 npm install

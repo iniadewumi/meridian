@@ -2,6 +2,20 @@
 
 ## Immediate Next Steps (5 minutes)
 
+## One-command start (recommended)
+
+```bash
+npm run easy-start
+```
+
+This will:
+
+- Create `.env.local` from `.env.example` (if missing)
+- Install packages (if needed)
+- Start the app at `http://localhost:3000`
+
+See `REQUIREMENTS.md` for prerequisites and the full package list.
+
 ### 1. Install Dependencies
 ```bash
 npm install
