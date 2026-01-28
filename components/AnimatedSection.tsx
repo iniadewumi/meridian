@@ -16,10 +16,11 @@ export function AnimatedSection({
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    let timeoutId: ReturnType<typeof setTimeout> | null = null
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setTimeout(() => setIsVisible(true), delay)
+          timeoutId = setTimeout(() => setIsVisible(true), delay)
           observer.disconnect()
         }
       },
@@ -27,7 +28,10 @@ export function AnimatedSection({
     )
 
     if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
+    return () => {
+      if (timeoutId) clearTimeout(timeoutId)
+      observer.disconnect()
+    }
   }, [delay])
 
   return (

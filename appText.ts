@@ -616,6 +616,7 @@ export const appText = {
     showcases: [
       {
         company: 'AIHealth Solutions',
+        category: 'Healthcare AI',
         tagline: 'Healthcare AI Platform',
         description: 'Completed EU AI Act risk classification for 15+ medical AI models, achieved SOC 2 Type II certification, and established ongoing compliance ops in 90 days.',
         metrics: [
@@ -627,6 +628,7 @@ export const appText = {
       },
       {
         company: 'FinAI Technologies',
+        category: 'Financial Services',
         tagline: 'Financial AI Services',
         description: 'Navigated EU AI Act high-risk classification, mapped controls to ISO 27001, and passed enterprise procurement questionnaires within 60 days.',
         metrics: [
@@ -638,6 +640,7 @@ export const appText = {
       },
       {
         company: 'MedTech AI',
+        category: 'Healthcare AI',
         tagline: 'Medical Device AI',
         description: 'Achieved EU AI Act compliance for Class II medical devices, established AI governance framework, and prepared for MDR audit readiness.',
         metrics: [
@@ -649,6 +652,7 @@ export const appText = {
       },
       {
         company: 'SaaS AI Platform',
+        category: 'SaaS',
         tagline: 'Enterprise SaaS',
         description: 'Completed Readiness Sprint, achieved SOC 2 Type I, and established ongoing compliance ops cadence aligned to product release cycles.',
         metrics: [
@@ -660,6 +664,7 @@ export const appText = {
       },
       {
         company: 'EduAI Learning',
+        category: 'Startups',
         tagline: 'Education Technology',
         description: 'Classified AI tutoring systems under EU AI Act, built defensible artifact set, and passed enterprise customer security reviews.',
         metrics: [
@@ -671,6 +676,7 @@ export const appText = {
       },
       {
         company: 'RetailAI Analytics',
+        category: 'Enterprise',
         tagline: 'Retail AI Solutions',
         description: 'Achieved EU AI Act compliance for recommendation engines, mapped to ISO 27001 controls, and established vendor risk management program.',
         metrics: [

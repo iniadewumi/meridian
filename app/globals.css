@@ -74,30 +74,6 @@
 }
 
 /* Component styles */
-.btn-primary {
-  border: 1px solid white;
-  padding: 0.75rem 1.5rem;
-  color: white;
-  transition: all 0.2s;
-}
-
-.btn-primary:hover {
-  background-color: white;
-  color: black;
-}
-
-.btn-secondary {
-  border: 1px solid var(--color-dark-text-secondary);
-  padding: 0.75rem 1.5rem;
-  color: var(--color-dark-text-secondary);
-  transition: all 0.2s;
-}
-
-.btn-secondary:hover {
-  border-color: white;
-  color: white;
-}
-
 .nav-link {
   color: var(--color-dark-text-secondary);
   transition: color 0.2s;

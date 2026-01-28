@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { Metadata } from 'next'
 import { appText } from '@/appText'
@@ -12,7 +11,21 @@ const { showcase } = appText
 const showcases = showcase.showcases
 const categories = showcase.categories
 
-export default function ShowcasePage() {
+export default function ShowcasePage({
+  searchParams,
+}: {
+  searchParams?: { category?: string }
+}) {
+  const selectedCategory =
+    (searchParams?.category && categories.includes(searchParams.category)
+      ? searchParams.category
+      : 'All') ?? 'All'
+
+  const filteredShowcases =
+    selectedCategory === 'All'
+      ? showcases
+      : showcases.filter((item) => item.category === selectedCategory)
+
   return (
     <div className="min-h-screen pt-24 pb-20 px-6">
       <div className="max-w-7xl mx-auto">
@@ -29,22 +42,23 @@ export default function ShowcasePage() {
         {/* Category Filter */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           {categories.map((category) => (
-            <button
+            <Link
               key={category}
+              href={category === 'All' ? '/showcase' : `/showcase?category=${encodeURIComponent(category)}`}
               className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
-                category === 'All'
+                category === selectedCategory
                   ? 'bg-white text-black'
                   : 'bg-dark-surface text-dark-text-secondary hover:text-white border border-dark-border hover:border-dark-text-muted'
               }`}
             >
               {category}
-            </button>
+            </Link>
           ))}
         </div>
 
         {/* Showcase Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
-          {showcases.map((item) => (
+          {filteredShowcases.map((item) => (
             <Link
               key={item.company}
               href={item.href}
