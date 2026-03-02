@@ -16,35 +16,39 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="fixed top-0 w-full bg-black/80 backdrop-blur-sm z-50 border-b border-[#222]">
-      <nav className="max-w-7xl mx-auto px-6 lg:px-8" aria-label="Main navigation">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+    <header className="border-b border-dark-border bg-dark-bg">
+      <nav className="mx-auto max-w-[1120px] px-6 py-8" aria-label="Main navigation">
+        <div className="flex items-center justify-between">
           <Link 
             href="/" 
-            className="text-xl font-bold tracking-tighter hover:opacity-80 transition-opacity"
-            aria-label="Meridian home"
+            className="wordmark font-serif text-[1.4rem] tracking-tight text-dark-text no-underline transition-opacity hover:opacity-80"
+            aria-label={`${appText.metadata.siteName} home`}
           >
-            {appText.header.logo}
+            <span>{appText.header.logo} </span>
+            <span className="text-dark-text-muted font-normal">{appText.header.logoSecondary}</span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center gap-8">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="nav-link text-sm font-medium"
+                className="nav-link text-sm font-medium no-underline px-3 py-2 rounded-sm"
               >
                 {item.name}
               </Link>
             ))}
+            <Link
+              href={appText.header.ctaHref ?? '/contact'}
+              className="nav-cta no-underline hidden md:inline-flex"
+            >
+              {appText.header.cta}
+            </Link>
           </div>
 
-          {/* Mobile menu button */}
           <button
             type="button"
-            className="md:hidden inline-flex items-center justify-center p-2 text-[#888] hover:text-white transition-colors"
+            className="md:hidden inline-flex items-center justify-center p-2 text-dark-text-muted hover:text-dark-text transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded={mobileMenuOpen}
             aria-label={mobileMenuOpen ? appText.header.mobileMenu.close : appText.header.mobileMenu.open}
@@ -62,20 +66,26 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Mobile menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-[#222]">
-            <div className="flex flex-col space-y-4">
+          <div className="md:hidden py-4 border-t border-dark-border">
+            <div className="flex flex-col gap-3">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="nav-link text-base font-medium py-2"
+                  className="py-1 text-sm font-medium text-dark-text-muted no-underline transition-colors hover:text-dark-text"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.name}
                 </Link>
               ))}
+              <Link
+                href={appText.header.ctaHref ?? '/contact'}
+                className="nav-cta no-underline w-fit mt-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {appText.header.cta}
+              </Link>
             </div>
           </div>
         )}

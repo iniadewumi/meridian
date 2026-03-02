@@ -9,17 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Next.js inspired dark palette
-        'dark-bg': '#000000',
-        'dark-surface': '#111111',
-        'dark-border': '#222222',
-        'dark-text': '#ffffff',
-        'dark-text-secondary': '#ff6ad8',
-        'dark-text-muted': '#666666',
-        'dark-hover': '#1a1a1a',
+        // Meridian S&O design tokens (match meridian-so.html)
+        'dark-bg': '#f8f7f4', // paper
+        'dark-surface': '#f2f0eb', // warm
+        'dark-border': '#d4d2cd', // rule
+        'dark-text': '#1a1d23', // ink
+        'dark-text-secondary': '#2c5f4a', // accent
+        'dark-text-muted': '#6b6e76', // stone
+        'dark-hover': '#e8f0ec', // accent-light
+        'accent-hover': '#234d3b', // primary button hover
       },
       fontFamily: {
-        sans: ['var(--font-inter)'],
+        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-serif)', 'serif'],
       },
       letterSpacing: {
         tighter: '-0.04em',

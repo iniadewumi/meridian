@@ -61,7 +61,7 @@ export default function ContactForm() {
             required
             value={formData.name}
             onChange={handleChange}
-            className="w-full bg-dark-bg border border-dark-border rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+            className="w-full bg-dark-bg border border-dark-border rounded-md px-4 py-3 text-dark-text focus:outline-none focus:ring-2 focus:ring-dark-text-secondary focus:border-transparent"
             disabled={formState === 'submitting'}
           />
         </div>
@@ -78,7 +78,7 @@ export default function ContactForm() {
             required
             value={formData.email}
             onChange={handleChange}
-            className="w-full bg-dark-bg border border-dark-border rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+            className="w-full bg-dark-bg border border-dark-border rounded-md px-4 py-3 text-dark-text focus:outline-none focus:ring-2 focus:ring-dark-text-secondary focus:border-transparent"
             disabled={formState === 'submitting'}
           />
         </div>
@@ -94,7 +94,7 @@ export default function ContactForm() {
             name="company"
             value={formData.company}
             onChange={handleChange}
-            className="w-full bg-dark-bg border border-dark-border rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+            className="w-full bg-dark-bg border border-dark-border rounded-md px-4 py-3 text-dark-text focus:outline-none focus:ring-2 focus:ring-dark-text-secondary focus:border-transparent"
             disabled={formState === 'submitting'}
           />
         </div>
@@ -110,14 +110,14 @@ export default function ContactForm() {
             required
             value={formData.interest}
             onChange={handleChange}
-            className="w-full bg-dark-bg border border-dark-border rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+            className="w-full bg-dark-bg border border-dark-border rounded-md px-4 py-3 text-dark-text focus:outline-none focus:ring-2 focus:ring-dark-text-secondary focus:border-transparent"
             disabled={formState === 'submitting'}
           >
             <option value="general">{appText.contact.form.interestOptions.general}</option>
-            <option value="sales">{appText.contact.form.interestOptions.sales}</option>
-            <option value="support">{appText.contact.form.interestOptions.support}</option>
-            <option value="partnership">{appText.contact.form.interestOptions.partnership}</option>
-            <option value="enterprise">{appText.contact.form.interestOptions.enterprise}</option>
+            <option value="soc2">{appText.contact.form.interestOptions.soc2}</option>
+            <option value="pci">{appText.contact.form.interestOptions.pci}</option>
+            <option value="iso">{appText.contact.form.interestOptions.iso}</option>
+            <option value="architecture">{appText.contact.form.interestOptions.architecture}</option>
           </select>
         </div>
 
@@ -133,7 +133,7 @@ export default function ContactForm() {
             rows={5}
             value={formData.message}
             onChange={handleChange}
-            className="w-full bg-dark-bg border border-dark-border rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent resize-none"
+            className="w-full bg-dark-bg border border-dark-border rounded-md px-4 py-3 text-dark-text focus:outline-none focus:ring-2 focus:ring-dark-text-secondary focus:border-transparent resize-none"
             disabled={formState === 'submitting'}
           />
         </div>

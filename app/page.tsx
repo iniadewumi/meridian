@@ -1,66 +1,46 @@
+import Link from 'next/link'
 import Hero from '@/components/Hero'
+import SituationSection from '@/components/SituationSection'
 import FeatureGrid from '@/components/FeatureGrid'
-import TrustedBy from '@/components/TrustedBy'
 import OffersSection from '@/components/OffersSection'
+import WhyMeridianSection from '@/components/WhyMeridianSection'
 import FAQ from '@/components/FAQ'
 import { appText } from '@/appText'
 
 export default function HomePage() {
+  const { finalCta } = appText.home
   return (
     <>
-      {/* Hero section with primary CTA */}
       <Hero />
-
-      {/* Social proof - proof language */}
-      <TrustedBy />
-
-      {/* Core features */}
+      <SituationSection />
       <FeatureGrid />
-
-      {/* Company pitch paragraph */}
-      <section className="py-20 px-6">
-        <div className="max-w-4xl mx-auto">
-          <p className="text-lg md:text-xl text-[#888] leading-relaxed text-center">
-            {appText.home.pitch.paragraph}
-          </p>
-        </div>
-      </section>
-
-      {/* Offers section */}
       <OffersSection />
-
-      {/* FAQ section */}
+      <WhyMeridianSection />
       <FAQ />
-
-      {/* Final CTA section */}
-      <section className="py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-            {appText.home.finalCta.title}
-          </h2>
-          <p className="text-lg text-[#888]">
-            {appText.home.finalCta.description}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a
-              href="/contact"
-              className="btn-primary rounded-md inline-flex items-center"
-            >
-              {appText.home.finalCta.primary}
-              <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
-            <a
-              href="/docs"
-              className="btn-secondary rounded-md inline-flex items-center"
-            >
-              {appText.home.finalCta.secondary}
-            </a>
+      <section id="contact" className="px-6 pt-20 pb-[100px]">
+        <div className="mx-auto max-w-[1120px]">
+          <div className="rounded-sm border border-transparent bg-dark-surface p-10 text-center transition-colors duration-300 hover:border-dark-border md:p-14">
+            <h2 className="font-serif text-4xl tracking-tight text-dark-text md:text-5xl">
+              {finalCta.title}
+            </h2>
+            <p className="mx-auto mt-4 max-w-[720px] text-lg leading-relaxed text-dark-text-muted">
+              {finalCta.description}
+            </p>
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Link href={finalCta.primaryHref ?? '/contact'} className="btn-primary">
+                {finalCta.primary}
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
+            <p className="mx-auto mt-6 max-w-[620px] text-sm leading-relaxed text-dark-text-muted">
+              {finalCta.altPrefix}
+              <a href={`mailto:${finalCta.email}`} className="text-dark-text-secondary font-medium underline decoration-dark-text-secondary/40 hover:decoration-dark-text-secondary">
+                {finalCta.email}
+              </a>
+            </p>
           </div>
-          <p className="text-sm text-[#666] pt-4">
-            {appText.home.finalCta.microcopy}
-          </p>
         </div>
       </section>
     </>

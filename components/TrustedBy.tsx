@@ -1,15 +1,19 @@
+'use client'
+
+import { AnimatedSection } from './AnimatedSection'
 import { appText } from '@/appText'
 
 export default function TrustedBy() {
   return (
-    <section className="py-20 px-6">
-      <div className="max-w-4xl mx-auto">
-        {/* Proof language */}
-        <div className="text-center">
-          <p className="text-lg md:text-xl text-[#888] leading-relaxed">
-            {appText.home.trustedBy.text}
-          </p>
-        </div>
+    <section className="border-b border-dark-border px-6 py-[72px]">
+      <div className="mx-auto max-w-[1120px]">
+        <AnimatedSection>
+          <div className="text-center">
+            <p className="mx-auto max-w-[820px] text-lg leading-relaxed text-dark-text-muted md:text-xl">
+              {appText.home.trustedBy.text}
+            </p>
+          </div>
+        </AnimatedSection>
       </div>
     </section>
   )
