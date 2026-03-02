@@ -4,8 +4,8 @@
 export const appText = {
   // Metadata
   metadata: {
-    siteName: 'Meridian',
-    defaultTitle: 'Meridian - Compliance Consulting within your budget',
+    siteName: 'Meridian S&O',
+    defaultTitle: 'Meridian S&O - Compliance Consulting within your budget',
     defaultDescription: 'EU AI Act–led readiness, SOC 2 and ISO alignment, and ongoing compliance ops—delivered fast, without consulting theater.',
     about: {
       title: 'About - Meridian',
@@ -36,6 +36,7 @@ export const appText = {
   // Header
   header: {
     logo: 'Meridian',
+    logoSecondary: 'S&O',
     nav: {
       docs: 'Docs',
       showcase: 'Showcase',

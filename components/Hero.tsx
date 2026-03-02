@@ -11,7 +11,7 @@ export default function Hero() {
             {hero.badge}
           </div>
 
-          <h1 className="font-serif text-[clamp(2.4rem,7vw,4.85rem)] leading-[1.04] tracking-tight text-dark-text">
+          <h1 className="font-serif text-[clamp(2.25rem,5vw,3.25rem)] leading-[1.15] font-normal tracking-tight text-dark-text">
             {hero.headline.part1}
             <br />
             <span className="text-dark-text-secondary">{hero.headline.part2}</span>

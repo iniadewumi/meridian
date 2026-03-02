@@ -21,10 +21,11 @@ export default function Header() {
         <div className="flex items-center justify-between">
           <Link 
             href="/" 
-            className="font-serif text-[1.4rem] tracking-tight text-dark-text no-underline transition-opacity hover:opacity-80"
+            className="wordmark font-serif text-[1.4rem] tracking-tight text-dark-text no-underline transition-opacity hover:opacity-80"
             aria-label={`${appText.metadata.siteName} home`}
           >
-            {appText.header.logo}
+            <span>{appText.header.logo} </span>
+            <span className="text-dark-text-muted font-normal">{appText.header.logoSecondary}</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-8">

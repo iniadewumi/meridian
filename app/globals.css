@@ -68,9 +68,15 @@
   50% { opacity: 0.6; transform: scale(1.02); }
 }
 
-/* Nav: accent text, hover = filled accent (match HTML .nav-cta) */
+/* Wordmark matches Meridian S&O HTML */
+.wordmark span:last-child {
+  color: var(--stone);
+  font-weight: 400;
+}
+
+/* Nav links: subtle text, accent on hover */
 .nav-link {
-  color: var(--accent);
+  color: var(--stone);
   padding: 0.5rem 0.75rem;
   border-radius: 0.125rem;
   text-decoration: none;
@@ -78,8 +84,8 @@
 }
 
 .nav-link:hover {
-  background-color: var(--accent);
-  color: var(--paper);
+  background-color: var(--accent-light);
+  color: var(--ink);
 }
 
 /* Primary button: solid accent (match HTML .hero-cta) */
