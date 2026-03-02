@@ -1,38 +1,38 @@
 @import "tailwindcss";
+@config "../tailwind.config.ts";
 
-@theme {
-  /* Dark theme colors */
-  --color-dark-bg: #000000;
-  --color-dark-surface: #111111;
-  --color-dark-border: #222222;
-  --color-dark-text: #ffffff;
-  --color-dark-text-secondary: #ff6ad8;
-  --color-dark-text-muted: #666666;
-  --color-dark-hover: #1a1a1a;
-  
-  /* Custom animations */
-  --animate-fade-in: fadeIn 0.5s ease-in;
-  --animate-slide-up: slideUp 0.5s ease-out;
-}
-
+/* Design tokens (match meridian-so.html) */
 @layer base {
-  * {
-    border-color: var(--color-dark-border);
+  :root {
+    --ink: #1a1d23;
+    --paper: #f8f7f4;
+    --stone: #6b6e76;
+    --accent: #2c5f4a;
+    --accent-hover: #234d3b;
+    --accent-light: #e8f0ec;
+    --rule: #d4d2cd;
+    --warm: #f2f0eb;
   }
-  
+
+  * {
+    border-color: var(--rule);
+  }
+
   html {
     scroll-behavior: smooth;
   }
-  
+
   body {
-    background-color: var(--color-dark-bg);
-    color: var(--color-dark-text);
+    background-color: var(--paper);
+    color: var(--ink);
+    font-size: 16.5px;
+    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   *:focus-visible {
-    outline: 2px solid white;
+    outline: 2px solid currentColor;
     outline-offset: 2px;
   }
 }
@@ -42,48 +42,110 @@
   to { opacity: 1; }
 }
 
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 @keyframes slideUp {
-  from { 
+  from {
     transform: translateY(20px);
     opacity: 0;
   }
-  to { 
+  to {
     transform: translateY(0);
     opacity: 1;
   }
 }
 
 @keyframes gridPulse {
-  0%, 100% {
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 0.4;
-  }
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.4; }
 }
 
 @keyframes cellHighlight {
-  0%, 100% {
-    opacity: 0.3;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.6;
-    transform: scale(1.02);
-  }
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.02); }
 }
 
-/* Component styles */
+/* Nav: accent text, hover = filled accent (match HTML .nav-cta) */
 .nav-link {
-  color: var(--color-dark-text-secondary);
-  transition: color 0.2s;
+  color: var(--accent);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.125rem;
+  text-decoration: none;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 .nav-link:hover {
-  color: white;
+  background-color: var(--accent);
+  color: var(--paper);
 }
 
-/* Dynamic Grid Styles */
+/* Primary button: solid accent (match HTML .hero-cta) */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  border-radius: 0.125rem;
+  text-decoration: none;
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+  background-color: var(--accent);
+  color: var(--paper);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+/* Secondary button: outline accent (match HTML .nav-cta) */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  border-radius: 0.125rem;
+  text-decoration: none;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  background: transparent;
+}
+
+.btn-secondary:hover {
+  background-color: var(--accent);
+  color: var(--paper);
+}
+
+/* Header CTA button (outline, same as secondary) */
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 0.125rem;
+  text-decoration: none;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+}
+
+.nav-cta:hover {
+  background-color: var(--accent);
+  color: var(--paper);
+}
+
+/* Dynamic Grid (used by DynamicGrid component) */
 .dynamic-grid {
   display: grid;
   gap: 1px;
@@ -132,14 +194,9 @@
   animation-delay: calc(var(--cell-index, 0) * 0.15s);
 }
 
-/* Subtle shimmer effect on highlighted cells */
 @keyframes shimmer {
-  0% {
-    background-position: -100% 0;
-  }
-  100% {
-    background-position: 100% 0;
-  }
+  0% { background-position: -100% 0; }
+  100% { background-position: 100% 0; }
 }
 
 .grid-cell.highlighted::before {
@@ -154,12 +211,7 @@
   animation-delay: calc(var(--cell-index, 0) * 0.2s);
 }
 
-
-/* app/globals.css */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
+/* Utilities */
 @keyframes gradient-shift {
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -177,18 +229,6 @@
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
-}
-
-/* Button styles */
-.btn-primary {
-  @apply px-8 py-4 bg-white text-black font-semibold;
-  @apply hover:bg-gray-200 transition-all duration-300;
-  @apply hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] hover:scale-105;
-}
-
-.btn-secondary {
-  @apply px-8 py-4 border border-white/20 text-white;
-  @apply hover:bg-white/5 hover:border-white/40 transition-all duration-300;
 }
 
 @media (prefers-reduced-motion: reduce) {

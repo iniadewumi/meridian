@@ -1,3 +1,6 @@
+'use client'
+
+import { AnimatedSection } from './AnimatedSection'
 import { appText } from '@/appText'
 
 interface OfferProps {
@@ -11,19 +14,19 @@ const offers: OfferProps[] = appText.home.offers.offers
 
 function OfferCard({ title, purpose, items, bestFor }: OfferProps) {
   return (
-    <div className="bg-[#111] border border-[#222] rounded-lg p-8 hover:border-[#666] transition-all duration-300 h-full flex flex-col">
+    <div className="flex h-full flex-col rounded-[3px] border border-transparent bg-dark-surface p-8 transition-[border-color] duration-300 hover:border-dark-border">
       <div className="space-y-6 flex-grow">
         <div>
-          <h3 className="text-2xl font-bold tracking-tight mb-3">{title}</h3>
-          <p className="text-[#888] leading-relaxed">{purpose}</p>
+          <h3 className="mb-3 font-serif text-3xl leading-tight tracking-tight text-dark-text">{title}</h3>
+          <p className="leading-relaxed text-dark-text-muted">{purpose}</p>
         </div>
         
         <div>
-          <h4 className="text-sm font-semibold text-white mb-3 uppercase tracking-wider">{appText.home.offers.whatYouGet}</h4>
+          <h4 className="mb-3 text-xs font-semibold uppercase tracking-[0.1em] text-dark-text">{appText.home.offers.whatYouGet}</h4>
           <ul className="space-y-3">
             {items.map((item, index) => (
-              <li key={index} className="text-[#888] leading-relaxed flex items-start gap-3">
-                <svg className="w-5 h-5 text-white flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <li key={index} className="flex items-start gap-3 leading-relaxed text-dark-text-muted">
+                <svg className="mt-0.5 h-5 w-5 flex-shrink-0 text-dark-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
                 <span>{item}</span>
@@ -33,9 +36,9 @@ function OfferCard({ title, purpose, items, bestFor }: OfferProps) {
         </div>
       </div>
       
-      <div className="mt-6 pt-6 border-t border-[#222]">
-        <p className="text-sm text-[#666]">
-          <span className="font-semibold text-white">{appText.home.offers.bestFor}</span> {bestFor}
+      <div className="mt-6 border-t border-dark-border pt-6">
+        <p className="text-sm text-dark-text-muted">
+          <span className="font-semibold text-dark-text">{appText.home.offers.bestFor}</span> {bestFor}
         </p>
       </div>
     </div>
@@ -44,24 +47,24 @@ function OfferCard({ title, purpose, items, bestFor }: OfferProps) {
 
 export default function OffersSection() {
   return (
-    <section className="py-20 px-6">
-      <div className="max-w-7xl mx-auto">
-        {/* Section header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
-            {appText.home.offers.title}
-          </h2>
-          <p className="text-lg text-[#888] max-w-2xl mx-auto">
-            {appText.home.offers.subtitle}
-          </p>
-        </div>
+    <section className="border-b border-dark-border px-6 py-[72px]">
+      <div className="mx-auto max-w-[1120px]">
+        <AnimatedSection>
+          <div className="text-center mb-16">
+            <h2 className="mb-4 font-serif text-4xl tracking-tight text-dark-text md:text-5xl">
+              {appText.home.offers.title}
+            </h2>
+            <p className="mx-auto max-w-[680px] text-lg text-dark-text-muted">
+              {appText.home.offers.subtitle}
+            </p>
+          </div>
 
-        {/* Offers grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {offers.map((offer) => (
-            <OfferCard key={offer.title} {...offer} />
-          ))}
-        </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {offers.map((offer) => (
+              <OfferCard key={offer.title} {...offer} />
+            ))}
+          </div>
+        </AnimatedSection>
       </div>
     </section>
   )

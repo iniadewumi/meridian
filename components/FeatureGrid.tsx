@@ -1,3 +1,6 @@
+'use client'
+
+import { AnimatedSection } from './AnimatedSection'
 import { appText } from '@/appText'
 
 interface FeatureProps {
@@ -41,36 +44,36 @@ const features: FeatureProps[] = appText.home.featureGrid.features.map((feature,
 
 function FeatureCard({ title, description, icon }: FeatureProps) {
   return (
-    <div className="space-y-4">
-      <div className="w-12 h-12 rounded-lg bg-[#111] border border-[#222] flex items-center justify-center text-white">
+    <div className="h-full space-y-4 rounded-[3px] border border-transparent bg-dark-surface p-7 transition-[border-color] duration-300 hover:border-dark-border md:p-8">
+      <div className="flex h-11 w-11 items-center justify-center rounded-[3px] border border-dark-border bg-dark-surface text-dark-text-secondary">
         {icon}
       </div>
-      <h3 className="text-xl font-bold tracking-tight">{title}</h3>
-      <p className="text-[#888] leading-relaxed">{description}</p>
+      <h3 className="text-xl font-semibold tracking-tight text-dark-text">{title}</h3>
+      <p className="leading-relaxed text-dark-text-muted">{description}</p>
     </div>
   )
 }
 
 export default function FeatureGrid() {
   return (
-    <section className="py-20 px-6 bg-[#111]">
-      <div className="max-w-7xl mx-auto">
-        {/* Section header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
-            {appText.home.featureGrid.title}
-          </h2>
-          <p className="text-lg text-[#888] max-w-2xl mx-auto">
-            {appText.home.featureGrid.subtitle}
-          </p>
-        </div>
+    <section className="border-b border-dark-border px-6 py-[72px]">
+      <div className="mx-auto max-w-[1120px]">
+        <AnimatedSection>
+          <div className="text-center mb-16">
+            <h2 className="mb-4 font-serif text-4xl tracking-tight text-dark-text md:text-5xl">
+              {appText.home.featureGrid.title}
+            </h2>
+            <p className="mx-auto max-w-[640px] text-lg text-dark-text-muted">
+              {appText.home.featureGrid.subtitle}
+            </p>
+          </div>
 
-        {/* Feature grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-          {features.map((feature) => (
-            <FeatureCard key={feature.title} {...feature} />
-          ))}
-        </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {features.map((feature) => (
+              <FeatureCard key={feature.title} {...feature} />
+            ))}
+          </div>
+        </AnimatedSection>
       </div>
     </section>
   )

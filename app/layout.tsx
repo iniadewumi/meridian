@@ -1,12 +1,22 @@
 // app/layout.tsx
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { DM_Sans, DM_Serif_Display } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { appText } from '@/appText'
 
-const inter = Inter({ subsets: ['latin'] })
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-sans',
+})
+
+const dmSerif = DM_Serif_Display({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-serif',
+})
 
 export const metadata: Metadata = {
   title: appText.metadata.defaultTitle,
@@ -19,8 +29,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} antialiased bg-black text-white`}>
+    <html lang="en" className={`${dmSans.variable} ${dmSerif.variable}`}>
+      <body className="font-sans antialiased bg-dark-bg text-dark-text">
         <Header />
         <main>{children}</main>
         <Footer />
