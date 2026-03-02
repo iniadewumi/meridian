@@ -1,10 +1,12 @@
+import { appText } from '@/appText'
+
 export default function Loading() {
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="text-center">
         {/* Spinner */}
         <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-solid border-white border-r-transparent mb-4"></div>
-        <p className="text-dark-text-secondary">Loading...</p>
+        <p className="text-dark-text-secondary">{appText.loading.message}</p>
       </div>
     </div>
   )

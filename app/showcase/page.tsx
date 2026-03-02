@@ -47,8 +47,8 @@ export default function ShowcasePage({
               href={category === 'All' ? '/showcase' : `/showcase?category=${encodeURIComponent(category)}`}
               className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
                 category === selectedCategory
-                  ? 'bg-white text-black'
-                  : 'bg-dark-surface text-dark-text-secondary hover:text-white border border-dark-border hover:border-dark-text-muted'
+                  ? 'bg-dark-text-secondary text-dark-bg'
+                  : 'bg-dark-surface text-dark-text-secondary hover:text-dark-text border border-dark-border hover:border-dark-text-muted'
               }`}
             >
               {category}
@@ -122,14 +122,11 @@ export default function ShowcasePage({
             {showcase.cta.description}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/docs" className="btn-primary rounded-md inline-flex items-center">
+            <Link href={showcase.cta.primaryHref ?? '/contact'} className="btn-primary rounded-md inline-flex items-center">
               {showcase.cta.primary}
               <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
-            </Link>
-            <Link href="/contact" className="btn-secondary rounded-md">
-              {showcase.cta.secondary}
             </Link>
           </div>
         </div>

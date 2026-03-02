@@ -39,10 +39,10 @@ export default function Header() {
               </Link>
             ))}
             <Link
-              href="/contact"
+              href={appText.header.ctaHref ?? '/contact'}
               className="nav-cta no-underline hidden md:inline-flex"
             >
-              Schedule a Call
+              {appText.header.cta}
             </Link>
           </div>
 
@@ -80,11 +80,11 @@ export default function Header() {
                 </Link>
               ))}
               <Link
-                href="/contact"
+                href={appText.header.ctaHref ?? '/contact'}
                 className="nav-cta no-underline w-fit mt-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Schedule a Call
+                {appText.header.cta}
               </Link>
             </div>
           </div>

@@ -12,9 +12,7 @@ export default function Hero() {
           </div>
 
           <h1 className="font-serif text-[clamp(2.25rem,5vw,3.25rem)] leading-[1.15] font-normal tracking-tight text-dark-text">
-            {hero.headline.part1}
-            <br />
-            <span className="text-dark-text-secondary">{hero.headline.part2}</span>
+            {typeof hero.headline === 'string' ? hero.headline : `${(hero.headline as { part1: string; part2: string }).part1} ${(hero.headline as { part1: string; part2: string }).part2}`}
           </h1>
 
           <p className="max-w-[68ch] text-lg leading-relaxed text-dark-text-muted md:text-xl">
@@ -22,15 +20,11 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-col items-start gap-3 sm:flex-row">
-            <Link href="/contact" className="btn-primary">
+            <Link href={hero.cta.primaryHref ?? '/contact'} className="btn-primary">
               {hero.cta.primary}
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
-            </Link>
-
-            <Link href="/docs" className="btn-secondary">
-              {hero.cta.secondary}
             </Link>
           </div>
 
@@ -43,7 +37,7 @@ export default function Hero() {
                 <svg className="h-3.5 w-3.5 flex-shrink-0 text-dark-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                {hero.features.euAiAct}
+                {hero.features.pci}
               </span>
               <span className="inline-flex items-center gap-2 rounded-sm border border-dark-border bg-dark-surface px-3 py-1.5 whitespace-nowrap">
                 <svg className="h-3.5 w-3.5 flex-shrink-0 text-dark-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">

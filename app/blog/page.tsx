@@ -112,14 +112,14 @@ export default function BlogPage() {
 
         {/* Newsletter Signup */}
         <div className="mt-20 bg-dark-surface border border-dark-border rounded-lg p-12 text-center">
-          <h2 className="text-3xl font-bold mb-4">Subscribe to Our Newsletter</h2>
+          <h2 className="text-3xl font-bold mb-4">{blog.newsletter.title}</h2>
           <p className="text-lg text-dark-text-secondary mb-8 max-w-2xl mx-auto">
-            Get the latest product updates, technical articles, and company news delivered to your inbox
+            {blog.newsletter.description}
           </p>
           <form className="max-w-md mx-auto flex gap-3">
             <input
               type="email"
-              placeholder="Enter your email"
+              placeholder={blog.newsletter.placeholder}
               className="flex-1 bg-dark-bg border border-dark-border rounded-md px-4 py-3 text-white placeholder-dark-text-muted focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
               required
             />
@@ -127,7 +127,7 @@ export default function BlogPage() {
               type="submit"
               className="btn-primary rounded-md px-6 whitespace-nowrap"
             >
-              Subscribe
+              {blog.newsletter.button}
             </button>
           </form>
         </div>
