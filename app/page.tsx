@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import ScheduleCallButton from '@/components/ScheduleCallButton'
 import Hero from '@/components/Hero'
 import SituationSection from '@/components/SituationSection'
 import FeatureGrid from '@/components/FeatureGrid'
@@ -27,12 +27,12 @@ export default function HomePage() {
               {finalCta.description}
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Link href={finalCta.primaryHref ?? '/contact'} className="btn-primary">
+              <ScheduleCallButton className="btn-primary">
                 {finalCta.primary}
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-              </Link>
+              </ScheduleCallButton>
             </div>
             <p className="mx-auto mt-6 max-w-[620px] text-sm leading-relaxed text-dark-text-muted">
               {finalCta.altPrefix}

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Metadata } from 'next'
 import { appText } from '@/appText'
+import { getPosts } from '@/content/blog'
 
 export const metadata: Metadata = {
   title: appText.metadata.blog.title,
@@ -8,10 +9,10 @@ export const metadata: Metadata = {
 }
 
 const { blog } = appText
-const blogPosts = blog.posts
 const categories = blog.categories
 
 export default function BlogPage() {
+  const blogPosts = getPosts()
   return (
     <div className="min-h-screen pt-24 pb-20 px-6">
       <div className="max-w-7xl mx-auto">
@@ -33,7 +34,7 @@ export default function BlogPage() {
               className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
                 category === 'All'
                   ? 'bg-white text-black'
-                  : 'bg-dark-surface text-dark-text-secondary hover:text-white border border-dark-border hover:border-dark-text-muted'
+                  : 'bg-dark-surface text-dark-text-secondary hover:text-dark-text border border-dark-border hover:border-dark-text-muted'
               }`}
             >
               {category}
@@ -120,7 +121,7 @@ export default function BlogPage() {
             <input
               type="email"
               placeholder={blog.newsletter.placeholder}
-              className="flex-1 bg-dark-bg border border-dark-border rounded-md px-4 py-3 text-white placeholder-dark-text-muted focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+              className="flex-1 bg-dark-bg border border-dark-border rounded-md px-4 py-3 text-dark-text placeholder-dark-text-muted focus:outline-none focus:ring-2 focus:ring-dark-text focus:border-transparent"
               required
             />
             <button

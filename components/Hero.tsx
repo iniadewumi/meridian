@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import ScheduleCallButton from '@/components/ScheduleCallButton'
 import { appText } from '@/appText'
 
 export default function Hero() {
@@ -20,12 +20,12 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-col items-start gap-3 sm:flex-row">
-            <Link href={hero.cta.primaryHref ?? '/contact'} className="btn-primary">
+            <ScheduleCallButton className="btn-primary">
               {hero.cta.primary}
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
-            </Link>
+            </ScheduleCallButton>
           </div>
 
           <div className="space-y-4">

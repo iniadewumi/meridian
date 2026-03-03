@@ -12,8 +12,14 @@ From `.env.example`:
 
 - **NEXT_PUBLIC_SITE_URL**: Public site URL (used in metadata / links)
 - **NEXT_PUBLIC_GA_ID**: Google Analytics ID (optional; only if implemented)
-- **CONTACT_FORM_ENDPOINT**: Contact form endpoint (optional; only if implemented)
-- **RATE_LIMIT_REQUESTS_PER_HOUR**: Rate limit value (optional; only if implemented)
+- **CONTACT_TO_EMAIL**: Inbox that receives website contact submissions
+- **CONTACT_FROM_EMAIL**: Sender address used by SMTP transport
+- **SMTP_HOST**: SMTP host for outbound email
+- **SMTP_PORT**: SMTP port (for example `587` or `465`)
+- **SMTP_SECURE**: `true` for implicit TLS (typically port `465`), otherwise `false`
+- **SMTP_USER**: SMTP username
+- **SMTP_PASS**: SMTP password
+- **RATE_LIMIT_REQUESTS_PER_HOUR**: Contact form rate limit per IP (default `20`)
 - **SENTRY_DSN**: Sentry DSN (optional; only if implemented)
 
 ## Packages (npm dependencies)
@@ -23,6 +29,7 @@ From `.env.example`:
 - **next**: `14.1.0`
 - **react**: `^18.2.0`
 - **react-dom**: `^18.2.0`
+- **nodemailer**: SMTP delivery for contact form submissions
 
 ### Dev dependencies
 
@@ -47,4 +54,3 @@ What it does:
 - Creates `.env.local` from `.env.example` if needed
 - Installs packages if `node_modules/` is missing
 - Starts the dev server at `http://localhost:3000`
-

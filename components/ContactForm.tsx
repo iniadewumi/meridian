@@ -5,6 +5,7 @@ import { appText } from '@/appText'
 
 export default function ContactForm() {
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState(appText.contact.form.error)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -16,23 +17,26 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setFormState('submitting')
+    setErrorMessage(appText.contact.form.error)
 
-    // TODO: Implement actual form submission with rate limiting
-    // This should POST to your API endpoint with server-side validation
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-      
-      // Replace with actual API call:
-      // const response = await fetch('/api/contact', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(formData),
-      // })
-      
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+
+      if (!response.ok) {
+        const payload = (await response.json().catch(() => null)) as { error?: string } | null
+        throw new Error(payload?.error || 'Submission failed')
+      }
+
       setFormState('success')
       setFormData({ name: '', email: '', company: '', message: '', interest: 'general' })
     } catch (error) {
+      if (error instanceof Error && error.message.trim()) {
+        setErrorMessage(error.message)
+      }
       setFormState('error')
     }
   }
@@ -157,7 +161,7 @@ export default function ContactForm() {
         {/* Error Message */}
         {formState === 'error' && (
           <div className="bg-red-900/20 border border-red-500/50 rounded-md p-4 text-red-400">
-            {appText.contact.form.error}
+            {errorMessage}
           </div>
         )}
       </form>

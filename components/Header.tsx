@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import ScheduleCallButton from '@/components/ScheduleCallButton'
 import { appText } from '@/appText'
 
 const navigation = [
@@ -38,12 +39,9 @@ export default function Header() {
                 {item.name}
               </Link>
             ))}
-            <Link
-              href={appText.header.ctaHref ?? '/contact'}
-              className="nav-cta no-underline hidden md:inline-flex"
-            >
+            <ScheduleCallButton as="a" className="nav-cta no-underline hidden md:inline-flex">
               {appText.header.cta}
-            </Link>
+            </ScheduleCallButton>
           </div>
 
           <button
@@ -79,13 +77,13 @@ export default function Header() {
                   {item.name}
                 </Link>
               ))}
-              <Link
-                href={appText.header.ctaHref ?? '/contact'}
-                className="nav-cta no-underline w-fit mt-2"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {appText.header.cta}
-              </Link>
+<ScheduleCallButton
+                  as="a"
+                  className="nav-cta no-underline w-fit mt-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {appText.header.cta}
+                </ScheduleCallButton>
             </div>
           </div>
         )}
