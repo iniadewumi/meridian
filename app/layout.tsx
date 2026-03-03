@@ -4,6 +4,7 @@ import { DM_Sans, DM_Serif_Display } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import CalFloatingEmbed from '@/components/CalFloatingEmbed'
 import { appText } from '@/appText'
 
 const dmSans = DM_Sans({
@@ -31,9 +32,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${dmSans.variable} ${dmSerif.variable}`}>
       <body className="font-sans antialiased bg-dark-bg text-dark-text">
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <CalFloatingEmbed>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </CalFloatingEmbed>
       </body>
     </html>
   )

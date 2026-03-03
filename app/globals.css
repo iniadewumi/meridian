@@ -246,3 +246,10 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Cal.com floating button and modal above everything */
+.cal-embed,
+[data-cal-link],
+cal-floating-button {
+  z-index: 2147483647 !important;
+}

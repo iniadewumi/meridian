@@ -48,11 +48,12 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-eval' 'unsafe-inline'", // Next.js requires unsafe-eval for dev
-              "style-src 'self' 'unsafe-inline'",
+              "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://app.cal.com", // Cal.com embed
+              "style-src 'self' 'unsafe-inline' https://app.cal.com",
               "img-src 'self' data: https:",
-              "font-src 'self' data:",
-              "connect-src 'self'",
+              "font-src 'self' data: https://app.cal.com",
+              "connect-src 'self' https://app.cal.com", // Cal.com embed API
+              "frame-src 'self' https://app.cal.com", // Cal.com booking modal iframe
               "frame-ancestors 'none'",
             ].join('; ')
           }

@@ -32,7 +32,7 @@ export default function ContactPage() {
               </p>
               <a
                 href={`mailto:${appText.contact.contactInfo.sales.email}`}
-                className="text-white hover:underline"
+                className="text-dark-text hover:underline"
               >
                 {appText.contact.contactInfo.sales.email}
               </a>
@@ -46,7 +46,7 @@ export default function ContactPage() {
               </p>
               <a
                 href={`mailto:${appText.contact.contactInfo.support.email}`}
-                className="text-white hover:underline"
+                className="text-dark-text hover:underline"
               >
                 {appText.contact.contactInfo.support.email}
               </a>
@@ -60,7 +60,7 @@ export default function ContactPage() {
               </p>
               <a
                 href={`mailto:${appText.contact.contactInfo.press.email}`}
-                className="text-white hover:underline"
+                className="text-dark-text hover:underline"
               >
                 {appText.contact.contactInfo.press.email}
               </a>
@@ -74,7 +74,7 @@ export default function ContactPage() {
                   href="https://twitter.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-dark-text-secondary hover:text-white transition-colors"
+                  className="text-dark-text-secondary hover:text-dark-text transition-colors"
                   aria-label={appText.contact.contactInfo.social.ariaLabels.twitter}
                 >
                   <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -85,7 +85,7 @@ export default function ContactPage() {
                   href="https://github.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-dark-text-secondary hover:text-white transition-colors"
+                  className="text-dark-text-secondary hover:text-dark-text transition-colors"
                   aria-label={appText.contact.contactInfo.social.ariaLabels.github}
                 >
                   <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -96,7 +96,7 @@ export default function ContactPage() {
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-dark-text-secondary hover:text-white transition-colors"
+                  className="text-dark-text-secondary hover:text-dark-text transition-colors"
                   aria-label={appText.contact.contactInfo.social.ariaLabels.linkedin}
                 >
                   <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -112,6 +112,16 @@ export default function ContactPage() {
             <ContactForm />
           </div>
         </div>
+
+        {/* Schedule a call — Cal.com floating button appears site-wide */}
+        <section id="schedule-call" className="mt-20 pt-20 border-t border-dark-border">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-4">Schedule a discovery call</h2>
+            <p className="text-lg text-dark-text-secondary max-w-2xl mx-auto">
+              Use the booking button on the screen to choose a 30-minute slot. We&apos;ll confirm scope, timelines, and what “done” looks like.
+            </p>
+          </div>
+        </section>
 
         {/* Office Locations (Optional) */}
         <div className="mt-20 pt-20 border-t border-dark-border">

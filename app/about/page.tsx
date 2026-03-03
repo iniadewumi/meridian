@@ -1,8 +1,7 @@
 'use client'
-
-import Link from 'next/link'
 import { appText } from '@/appText'
 import { AnimatedSection } from '@/components/AnimatedSection'
+import ScheduleCallButton from '@/components/ScheduleCallButton'
 
 const { about } = appText
 
@@ -154,10 +153,7 @@ export default function AboutPage() {
               <p className="text-[15px] leading-[1.8] text-[#b0b3b8] max-w-[560px] mb-8">
                 {about.careers.description}
               </p>
-              <Link
-                href={about.careers.ctaHref ?? '/contact'}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-[3px] bg-dark-bg text-dark-text font-semibold text-[15px] hover:bg-[#e8e6e1] transition-colors"
-              >
+              <ScheduleCallButton className="inline-flex items-center gap-2 px-6 py-3 rounded-[3px] bg-dark-bg text-dark-text font-semibold text-[15px] hover:bg-[#e8e6e1] transition-colors">
                 {about.careers.cta}
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
@@ -167,7 +163,7 @@ export default function AboutPage() {
                     d="M9 5l7 7-7 7"
                   />
                 </svg>
-              </Link>
+              </ScheduleCallButton>
             </div>
           </AnimatedSection>
         </div>

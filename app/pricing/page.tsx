@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import ScheduleCallButton from '@/components/ScheduleCallButton'
 import { Metadata } from 'next'
 import { appText } from '@/appText'
 
@@ -59,7 +59,7 @@ export default function PricingPage() {
                 {tier.features.map((feature) => (
                   <li key={feature} className="flex items-start">
                     <svg
-                      className="h-6 w-6 text-white mr-3 flex-shrink-0"
+                      className="h-6 w-6 text-dark-text-secondary mr-3 flex-shrink-0"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -76,16 +76,15 @@ export default function PricingPage() {
                 ))}
               </ul>
 
-              <Link
-                href={tier.href}
+              <ScheduleCallButton
                 className={`block w-full text-center py-3 rounded-md font-medium transition-all ${
                   tier.featured
                     ? 'bg-white text-black hover:bg-gray-200'
-                    : 'border border-white text-white hover:bg-white hover:text-black'
+                    : 'border border-dark-text text-dark-text hover:bg-dark-text hover:text-dark-bg'
                 }`}
               >
                 {tier.cta}
-              </Link>
+              </ScheduleCallButton>
             </div>
           ))}
         </div>
@@ -105,15 +104,12 @@ export default function PricingPage() {
                 </div>
               ))}
             </div>
-            <Link
-              href="/contact"
-              className="inline-flex items-center btn-primary rounded-md"
-            >
+            <ScheduleCallButton className="inline-flex items-center btn-primary rounded-md">
               {pricing.enterprise.cta}
               <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
-            </Link>
+            </ScheduleCallButton>
           </div>
         </div>
 

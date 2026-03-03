@@ -5,7 +5,7 @@ export const appText = {
   // Metadata
   metadata: {
     siteName: 'Meridian S&O',
-    defaultTitle: 'Meridian S&O — Compliance Infrastructure for Growing Companies',
+    defaultTitle: 'Meridian S&O: Compliance Infrastructure for Growing Companies',
     defaultDescription: 'Meridian Standards & Operations designs compliance architecture for B2B SaaS companies: SOC 2, PCI DSS, and ISO alignment—control environment before your auditor asks.',
     about: {
       title: 'About - Meridian S&O',
@@ -38,7 +38,7 @@ export const appText = {
     logo: 'Meridian',
     logoSecondary: 'S&O',
     cta: 'Schedule a Call',
-    ctaHref: 'mailto:info@meridianso.com?subject=Discovery%20Call%20Request',
+    ctaHref: '/contact#schedule-call',
     nav: {
       docs: 'Docs',
       showcase: 'Showcase',
@@ -86,7 +86,6 @@ export const appText = {
     },
     copyright: '© 2026 Meridian Standards & Operations.',
     domain: 'MeridianSO.com',
-    builtWith: 'Built with Next.js',
   },
 
   // Home Page
@@ -97,7 +96,7 @@ export const appText = {
       subheadline: 'Meridian Standards & Operations designs compliance architecture for B2B SaaS companies preparing for PCI DSS, SOC 2, and enterprise buyer scrutiny.',
       cta: {
         primary: 'Schedule a Discovery Call',
-        primaryHref: 'mailto:info@meridianso.com?subject=Discovery%20Call%20Request',
+        primaryHref: '/contact#schedule-call',
       },
       microcopy: "20–30 minute scoping call. We'll confirm scope, timelines, and what \"done\" looks like.",
       features: {
@@ -221,7 +220,7 @@ export const appText = {
       title: 'Start with scope.',
       description: 'If you are preparing for PCI or SOC 2, the first conversation should be about what is actually in scope. We can start there.',
       primary: 'Schedule a Discovery Call',
-      primaryHref: 'mailto:info@meridianso.com?subject=Discovery%20Call%20Request',
+      primaryHref: '/contact#schedule-call',
       altPrefix: 'Or reach us directly at ',
       email: 'info@meridianso.com',
     },
@@ -296,11 +295,11 @@ export const appText = {
       title: 'Work with us',
       description: 'We work with companies that want a clear, scoped path to compliance—without over-investing or under-scoping.',
       cta: 'Schedule a discovery call',
-      ctaHref: 'mailto:info@meridianso.com?subject=Discovery%20Call%20Request',
+      ctaHref: '/contact#schedule-call',
     },
   },
 
-  // Blog Page
+  // Blog Page — post content lives in content/blog (see BLOG_STRUCTURE.md)
   blog: {
     header: {
       title: 'Blog',
@@ -534,6 +533,38 @@ export const appText = {
     },
   },
 
+  // Doc article content (individual doc pages)
+  docsPages: {
+    pciDssOverview: {
+      title: 'PCI DSS Overview',
+      description: 'What the Payment Card Industry Data Security Standard is, who it applies to, and how Meridian S&O helps you achieve and maintain compliance.',
+      breadcrumb: [{ label: 'Docs', href: '/docs' }, { label: 'PCI DSS', href: '/docs/pci-dss/overview' }, { label: 'Overview' }],
+      sections: [
+        {
+          title: 'What is PCI DSS?',
+          body: 'The Payment Card Industry Data Security Standard (PCI DSS) is a set of security standards designed to ensure that all companies that store, process, or transmit cardholder data maintain a secure environment. It was created by the PCI Security Standards Council (PCI SSC) and is mandated by the card brands (Visa, Mastercard, American Express, Discover, JCB) for any organization that handles cardholder data.',
+        },
+        {
+          title: 'Who must comply?',
+          body: 'Any entity that stores, processes, or transmits cardholder data—including merchants, processors, acquirers, issuers, and service providers—must comply with PCI DSS. Your compliance level and validation requirements depend on your transaction volume and how you interact with cardholder data. Meridian S&O helps you determine your scope and the right path to validation (e.g., SAQ or Report on Compliance).',
+        },
+        {
+          title: 'The 12 requirements',
+          body: 'PCI DSS is organized into 12 high-level requirements across six goals: build and maintain a secure network; protect cardholder data; maintain a vulnerability management program; implement strong access control; regularly monitor and test networks; and maintain an information security policy. Each requirement breaks down into sub-requirements and testing procedures that auditors and assessors use to evaluate compliance.',
+        },
+        {
+          title: 'How Meridian S&O helps',
+          body: 'We help you scope your cardholder data environment (CDE), map data flows, and align your controls to PCI DSS. Whether you need a readiness assessment, SAQ guidance, or support for a full Report on Compliance (ROC), we work with you to build defensible controls, documentation, and evidence so you can achieve and maintain compliance without stalling delivery.',
+        },
+      ],
+      relatedLinks: [
+        { name: 'SAQ Determination', href: '/docs/pci-dss/saq' },
+        { name: 'Scope & Data Flows', href: '/docs/pci-dss/scope' },
+        { name: 'Gap Assessment', href: '/docs/pci-dss/gap-assessment' },
+      ],
+    },
+  },
+
   // Pricing Page
   pricing: {
     header: {
@@ -716,7 +747,7 @@ export const appText = {
       title: 'Ready to build your control environment?',
       description: 'Join these companies. We start with scope—then framework, then audit.',
       primary: 'Schedule a Discovery Call',
-      primaryHref: 'mailto:info@meridianso.com?subject=Discovery%20Call%20Request',
+      primaryHref: '/contact#schedule-call',
     },
     readMore: 'Read case study',
   },
