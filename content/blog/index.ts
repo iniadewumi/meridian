@@ -24,3 +24,11 @@ export function getPostBySlug(slug: string): Post | null {
 export function getPostSlugs(): string[] {
   return posts.map((p) => p.slug)
 }
+
+/**
+ * All categories used by posts, with "All" first. Use for blog page filter.
+ */
+export function getCategories(): string[] {
+  const categories = [...new Set(posts.map((p) => p.category))].sort()
+  return ['All', ...categories]
+}

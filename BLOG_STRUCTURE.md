@@ -8,10 +8,10 @@ How the blog is organized and how to add or change posts.
 |------|----------|
 | **Post content (source of truth)** | `content/blog/posts.ts` |
 | **Types** | `content/blog/types.ts` |
-| **Helpers** | `content/blog/index.ts` — `getPosts()`, `getPostBySlug(slug)`, `getPostSlugs()` |
+| **Helpers** | `content/blog/index.ts` — `getPosts()`, `getPostBySlug(slug)`, `getPostSlugs()`, `getCategories()` |
 | **Listing page** | `app/blog/page.tsx` — uses `getPosts()` and `appText.blog` for UI strings |
 | **Single post page** | `app/blog/[slug]/page.tsx` — uses `getPostBySlug(slug)` |
-| **UI strings** | `appText.ts` → `blog` (header, categories, newsletter, imagePlaceholders) |
+| **UI strings** | `appText.ts` → `blog` (header, newsletter, imagePlaceholders). Categories are derived from posts via `getCategories()`. |
 
 ## Routes
 
@@ -24,7 +24,7 @@ How the blog is organized and how to add or change posts.
 2. Add a new object to the `posts` array with:
    - `slug` — URL path segment (lowercase, hyphens; e.g. `my-new-post`).
    - `title`, `excerpt`, `date` (YYYY-MM-DD), `author`, `category`, `readTime`, `body`.
-3. The post will show on `/blog` and at `/blog/[your-slug]`. Reuse an existing `category` so it appears in the filter, or add the category name to `appText.blog.categories` if it’s new.
+3. The post will show on `/blog` and at `/blog/[your-slug]`. Categories are derived from posts; use an existing category or any new name and it will appear in the filter automatically.
 
 ## Post shape (`Post` type)
 
@@ -35,7 +35,7 @@ Defined in `content/blog/types.ts`. Each post has:
 - **excerpt** — Short summary (listing and meta description).
 - **date** — ISO date string (YYYY-MM-DD); used for ordering and display.
 - **author** — Display name.
-- **category** — Must exist in `appText.blog.categories` for the filter.
+- **category** — Used for the filter; categories are derived from all posts via `getCategories()`.
 - **readTime** — e.g. `"5 min read"`.
 - **body** — Full content for the single-post page. Currently plain text; paragraphs are split on `\n\n`. You can later switch to Markdown/MDX if you add a parser.
 

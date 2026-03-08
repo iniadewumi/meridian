@@ -299,69 +299,12 @@ export const appText = {
     },
   },
 
-  // Blog Page — post content lives in content/blog (see BLOG_STRUCTURE.md)
+  // Blog Page — post content and categories live in content/blog/posts.ts
   blog: {
     header: {
       title: 'Blog',
       description: 'Updates and insights on compliance, SOC 2, PCI DSS, and control operations from Meridian S&O',
     },
-    categories: ['All', 'Compliance', 'SOC 2', 'PCI DSS', 'Case Study', 'Operations', 'Company'],
-    posts: [
-      {
-        title: 'Why We Start With Scope',
-        excerpt: 'The majority of wasted compliance spend comes from misunderstanding what is actually in scope. Here’s how we define it before you invest.',
-        date: '2025-01-15',
-        author: 'Meridian S&O',
-        category: 'Compliance',
-        readTime: '5 min read',
-        slug: 'why-we-start-with-scope',
-      },
-      {
-        title: 'SOC 2 Readiness: What to Expect in Your First 90 Days',
-        excerpt: 'A practical outline of control design, evidence collection, and audit prep when you’re preparing for SOC 2.',
-        date: '2025-01-10',
-        author: 'Meridian S&O',
-        category: 'SOC 2',
-        readTime: '8 min read',
-        slug: 'soc2-first-90-days',
-      },
-      {
-        title: 'PCI DSS Scoping: Cardholder Data Environment Basics',
-        excerpt: 'How we help fintech and B2B SaaS companies define their CDE and choose the right SAQ path.',
-        date: '2025-01-05',
-        author: 'Meridian S&O',
-        category: 'PCI DSS',
-        readTime: '6 min read',
-        slug: 'pci-dss-scoping',
-      },
-      {
-        title: 'Case Study: From Questionnaire Chaos to SOC 2 Type II',
-        excerpt: 'How one B2B SaaS company went from ad-hoc security answers to a defensible control environment in 90 days.',
-        date: '2025-01-01',
-        author: 'Meridian S&O',
-        category: 'Case Study',
-        readTime: '6 min read',
-        slug: 'case-study-soc2',
-      },
-      {
-        title: 'Keeping Compliance Operational: The TrustOps Cadence',
-        excerpt: 'Why compliance degrades when it’s not tied to product and vendor changes—and how we keep it current.',
-        date: '2024-12-28',
-        author: 'Meridian S&O',
-        category: 'Operations',
-        readTime: '5 min read',
-        slug: 'trustops-cadence',
-      },
-      {
-        title: 'Meridian S&O: What We Do and Who We Serve',
-        excerpt: 'A short overview of our approach—scope first, then framework, then audit—and who we work with.',
-        date: '2024-12-20',
-        author: 'Meridian S&O',
-        category: 'Company',
-        readTime: '4 min read',
-        slug: 'who-we-serve',
-      },
-    ],
     newsletter: {
       title: 'Subscribe',
       description: 'Get compliance and control-operations insights delivered to your inbox.',

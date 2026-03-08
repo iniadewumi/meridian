@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Metadata } from 'next'
 import { appText } from '@/appText'
-import { getPosts } from '@/content/blog'
+import { getPosts, getCategories } from '@/content/blog'
 
 export const metadata: Metadata = {
   title: appText.metadata.blog.title,
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 }
 
 const { blog } = appText
-const categories = blog.categories
+const categories = getCategories()
 
 export default function BlogPage() {
   const blogPosts = getPosts()

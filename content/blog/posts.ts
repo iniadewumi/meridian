@@ -11,7 +11,7 @@ export const posts: Post[] = [
     excerpt:
       `The majority of wasted compliance spend comes from misunderstanding what is actually in scope. Here's how we define it before you invest.`,
     date: '2025-01-15',
-    author: 'Meridian S&O',
+    author: 'Hannah Ifekoya',
     category: 'Compliance',
     readTime: '5 min read',
     body: `The majority of wasted compliance spend comes from misunderstanding what is actually in scope. Teams buy frameworks, hire consultants, and start writing policies before they've mapped where sensitive data lives and what systems touch it.
