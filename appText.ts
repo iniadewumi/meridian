@@ -93,7 +93,7 @@ export const appText = {
     hero: {
       badge: 'Compliance Infrastructure',
       headline: 'We build the control environment before your auditor, bank, or enterprise buyer asks for it.',
-      subheadline: 'Meridian Standards & Operations designs compliance architecture for B2B SaaS companies preparing for PCI DSS, SOC 2, and enterprise buyer scrutiny.',
+      subheadline: 'Meridian designs compliance architecture for fintech and SaaS companies preparing for SOC 2, PCI DSS, and enterprise security reviews',
       cta: {
         primary: 'Schedule a Discovery Call',
         primaryHref: '/contact#schedule-call',
@@ -283,11 +283,6 @@ export const appText = {
           name: 'Hannah Ifekoya',
           role: 'Founder',
           bio: 'Cybersecurity and compliance specialist with experience across fintech and B2B SaaS. Focused on control design and audit readiness so companies can pass scrutiny without wasting budget on mis-scoped engagements.',
-        },
-        {
-          name: 'Ini Adewumi',
-          role: 'Co-Founder',
-          bio: 'Background in data and software engineering. Brings product and infrastructure perspective to scope and evidence—so compliance maps to how systems actually work.',
         },
       ],
     },
