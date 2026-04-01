@@ -40,25 +40,35 @@ export default function ShowcasePage({
           </p>
         </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {categories.map((category) => (
-            <Link
-              key={category}
-              href={category === 'All' ? '/showcase' : `/showcase?category=${encodeURIComponent(category)}`}
-              className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
-                category === selectedCategory
-                  ? 'bg-dark-text-secondary text-dark-bg'
-                  : 'bg-dark-surface text-dark-text-secondary hover:text-dark-text border border-dark-border hover:border-dark-text-muted'
-              }`}
-            >
-              {category}
-            </Link>
-          ))}
-        </div>
+        {/* Category Filter — hidden until there are case studies to filter */}
+        {showcases.length > 0 && (
+          <div className="flex flex-wrap justify-center gap-3 mb-12">
+            {categories.map((category) => (
+              <Link
+                key={category}
+                href={category === 'All' ? '/showcase' : `/showcase?category=${encodeURIComponent(category)}`}
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                  category === selectedCategory
+                    ? 'bg-dark-text-secondary text-dark-bg'
+                    : 'bg-dark-surface text-dark-text-secondary hover:text-dark-text border border-dark-border hover:border-dark-text-muted'
+                }`}
+              >
+                {category}
+              </Link>
+            ))}
+          </div>
+        )}
 
-        {/* Showcase Grid */}
+        {/* Showcase Grid — card layout preserved for when `showcases` has entries */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+          {filteredShowcases.length === 0 && (
+            <div className="md:col-span-2 rounded-lg border border-dashed border-dark-border bg-dark-surface/50 px-8 py-16 text-center">
+              <h2 className="text-xl font-semibold text-dark-text mb-3">{showcase.emptyState.title}</h2>
+              <p className="text-dark-text-secondary max-w-lg mx-auto leading-relaxed">
+                {showcase.emptyState.description}
+              </p>
+            </div>
+          )}
           {filteredShowcases.map((item) => (
             <Link
               key={item.company}

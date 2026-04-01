@@ -16,13 +16,20 @@ function normalizePath(path: string) {
 }
 
 const sectionEntries: DocIndexEntry[] = appText.docs.sections.flatMap((section) =>
-  section.links.map((link) => ({
-    href: normalizePath(link.href),
-    title: link.name,
-    summary: section.description,
-    sectionTitle: section.title,
-    sectionDescription: section.description,
-  }))
+  section.links.map((link) => {
+    const summary =
+      'description' in link && typeof link.description === 'string' && link.description.trim().length > 0
+        ? link.description
+        : section.description
+
+    return {
+      href: normalizePath(link.href),
+      title: link.name,
+      summary,
+      sectionTitle: section.title,
+      sectionDescription: section.description,
+    }
+  })
 )
 
 const popularEntries: DocIndexEntry[] = appText.docs.popularResources.resources.map((resource) => ({
@@ -38,6 +45,21 @@ const docsIndex = Array.from(
 )
 
 const docsByPath = new Map(docsIndex.map((entry) => [entry.href, entry]))
+
+type PageContent = {
+  headings?: {
+    whatThisCovers?: string
+    howToUseIt?: string
+  }
+  whatThisCovers: { body: string; items?: string[] }
+  howToUseIt: { intro: string; items: string[] }
+  cta: { heading: string; body: string }
+}
+
+const pageContentByPath: Record<string, PageContent> = {
+  '/docs/getting-started/readiness-sprint': appText.docsPages.readinessSprintOverview,
+  '/docs/ops/cadence': appText.docsPages.opsCadenceOverview,
+}
 
 function getEntryFromSlug(slug: string[]) {
   const path = normalizePath(`/docs/${slug.join('/')}`)
@@ -71,6 +93,9 @@ export default function DocsDetailPage({ params }: { params: { slug: string[] } 
   const entry = getEntryFromSlug(params.slug)
   if (!entry) notFound()
 
+  const path = normalizePath(`/docs/${params.slug.join('/')}`)
+  const content = pageContentByPath[path]
+
   return (
     <div className="min-h-screen pt-24 pb-20 px-6">
       <div className="max-w-3xl mx-auto">
@@ -100,32 +125,58 @@ export default function DocsDetailPage({ params }: { params: { slug: string[] } 
 
         <article className="space-y-8">
           <section>
-            <h2 className="text-2xl font-semibold text-dark-text mb-3">What this guide covers</h2>
+            <h2 className="text-2xl font-semibold text-dark-text mb-3">
+              {content?.headings?.whatThisCovers ?? 'What this guide covers'}
+            </h2>
             <p className="text-base leading-[1.8] text-dark-text-muted">
-              This page belongs to the <strong>{entry.sectionTitle}</strong> track. It is intended to
-              help you understand scope decisions, required artifacts, and implementation order before
-              audit evidence is collected.
+              {content
+                ? content.whatThisCovers.body
+                : 'The purpose of this guide is to help you understand scope decisions, required artifacts, and implementation order before audit evidence is collected.'}
             </p>
+            {content?.whatThisCovers.items && content.whatThisCovers.items.length > 0 && (
+              <ul className="mt-4 list-disc pl-5 text-base leading-[1.8] text-dark-text-muted space-y-2">
+                {content.whatThisCovers.items.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            )}
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-dark-text mb-3">How to use it</h2>
+            <h2 className="text-2xl font-semibold text-dark-text mb-3">
+              {content?.headings?.howToUseIt ?? 'How to use this guide'}
+            </h2>
             <p className="text-base leading-[1.8] text-dark-text-muted mb-4">
-              Start by reviewing dependencies in this track, then align owners, timelines, and control
-              evidence with your current environment.
+              {content
+                ? content.howToUseIt.intro
+                : 'Use this guide to understand what decisions you need to make, what artifacts you need to produce, and what to do first—before you start collecting audit evidence.'}
             </p>
             <ul className="list-disc pl-5 text-base leading-[1.8] text-dark-text-muted space-y-2">
-              <li>Confirm what systems and data flows are in scope.</li>
-              <li>Assign control owners and define evidence cadence.</li>
-              <li>Document decisions so auditors and buyers can verify them.</li>
+              {content ? (
+                content.howToUseIt.items.map((item, i) => <li key={i}>{item}</li>)
+              ) : (
+                <>
+                  <li>Confirm what systems and data flows are in scope.</li>
+                  <li>Assign control owners and define evidence cadence.</li>
+                  <li>Document decisions so auditors and buyers can verify them.</li>
+                </>
+              )}
             </ul>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-dark-text mb-3">Need help with this section?</h2>
+            <h2 className="text-2xl font-semibold text-dark-text mb-3">
+              {content?.cta.heading ?? 'Need help with this section?'}
+            </h2>
             <p className="text-base leading-[1.8] text-dark-text-muted">
-              If you need an implementation walkthrough for <strong>{entry.title}</strong>, our team can
-              scope and prioritize the exact control set for your environment.
+              {content ? (
+                content.cta.body
+              ) : (
+                <>
+                  If you need an implementation walkthrough for <strong>{entry.title}</strong>, our team can
+                  scope and prioritize the exact control set for your environment.
+                </>
+              )}
             </p>
           </section>
         </article>

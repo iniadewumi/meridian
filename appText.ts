@@ -1,6 +1,17 @@
 // Centralized text content for the Meridian application
 // Update text here without modifying component code
 
+/** One published case study on `/showcase`. Add rows to `appText.showcase.showcases` when you have a real story. */
+export type ShowcaseCaseStudy = {
+  company: string
+  category: string
+  tagline: string
+  description: string
+  metrics: { label: string; value: string }[]
+  /** Must match `/showcase/<slug>` and the dynamic route segment, e.g. `/showcase/acme-corp` */
+  href: string
+}
+
 export const appText = {
   // Metadata
   metadata: {
@@ -13,7 +24,7 @@ export const appText = {
     },
     blog: {
       title: 'Blog - Meridian S&O',
-      description: 'Updates and insights on compliance, SOC 2, PCI DSS, and control operations.',
+      description: 'Articles on compliance, SOC 2, PCI DSS, and control operations.',
     },
     contact: {
       title: 'Contact Us - Meridian S&O',
@@ -29,7 +40,7 @@ export const appText = {
     },
     showcase: {
       title: 'Showcase - Meridian S&O',
-      description: 'How leading companies built their control environment with Meridian S&O—SOC 2, PCI DSS, and ISO success stories.',
+      description: 'Client success stories and case studies for SOC 2, PCI DSS, and ISO engagements.',
     },
   },
 
@@ -93,7 +104,7 @@ export const appText = {
     hero: {
       badge: 'Compliance Infrastructure',
       headline: 'We build the control environment before your auditor, bank, or enterprise buyer asks for it.',
-      subheadline: 'Meridian designs compliance architecture for fintech and SaaS companies preparing for SOC 2, PCI DSS, and enterprise security reviews',
+      subheadline: 'Meridian designs compliance architecture for fintech and SaaS companies preparing for SOC 2, PCI DSS, and enterprise security reviews.',
       cta: {
         primary: 'Schedule a Discovery Call',
         primaryHref: '/contact#schedule-call',
@@ -130,7 +141,7 @@ export const appText = {
     whyMeridian: {
       label: 'Why Meridian',
       heading: 'We are not a compliance factory.',
-      body: 'Most compliance consultants hand you a controls spreadsheet built from a generic template. We start with scope clarity because the majority of wasted compliance spend comes from misunderstanding what is actually in scope. We understand payment architecture, tokenization models, and the cloud infrastructure patterns fintech products are built on. We design controls around how your product operates, not how an auditor imagines it does.',
+      body: 'Most compliance consultants hand you a controls spreadsheet built from a generic template. We start with scope clarity because the majority of wasted compliance spend comes from misunderstanding what is actually in scope. We design controls around how your product operates, not how an auditor imagines it does.',
       callout: {
         title: 'AI Controls Expertise',
         body: 'If your product uses machine learning for decisioning, fraud detection, or underwriting, auditors and enterprise buyers are beginning to ask about model governance, data lineage, and algorithmic risk. We help you address those questions before they surface in diligence or audit.',
@@ -200,7 +211,7 @@ export const appText = {
         },
         {
           question: 'How do you stay cost-effective without being low-quality?',
-          answer: 'We reduce waste: tighter scope control, reusable crosswalks between PCI, SOC 2, and ISO, and deliverable templates that still fit your environment.',
+          answer: 'We reduce waste: tighter scope control, reusable frameworks between PCI, SOC 2, and ISO, and deliverable templates that still fit your environment.',
         },
         {
           question: 'Do you replace our internal GRC/security team?',
@@ -208,7 +219,7 @@ export const appText = {
         },
         {
           question: 'Can you guarantee certification?',
-          answer: 'No. We can make you defensible and audit-ready by aligning scope, controls, and evidence with auditor expectations.',
+          answer: 'While we cannot guarantee certification, we can make you defensible and audit-ready by aligning scope, controls, and evidence with auditor expectations.',
         },
         {
           question: 'Where do you start?',
@@ -294,11 +305,17 @@ export const appText = {
     },
   },
 
-  // Blog Page — post content and categories live in content/blog/posts.ts
+  // Blog Page — post content lives in content/blog/posts.ts (`Post` type in content/blog/types.ts)
   blog: {
     header: {
       title: 'Blog',
-      description: 'Updates and insights on compliance, SOC 2, PCI DSS, and control operations from Meridian S&O',
+      description:
+        'Articles will appear here as we publish them—compliance, SOC 2, PCI DSS, and control operations.',
+    },
+    emptyState: {
+      title: 'Posts coming soon',
+      description:
+        'We have not published articles yet. Subscribe below if you want updates when we do, or reach out via Contact.',
     },
     newsletter: {
       title: 'Subscribe',
@@ -310,6 +327,7 @@ export const appText = {
       featured: 'Featured Image',
       post: 'Post Image',
     },
+    readMore: 'Read article',
   },
 
   // Contact Page
@@ -394,7 +412,12 @@ export const appText = {
         links: [
           { name: 'How We Work', href: '/docs/getting-started/how-we-work' },
           { name: 'Scoping Your Program', href: '/docs/getting-started/scoping' },
-          { name: 'Readiness Sprint Overview', href: '/docs/getting-started/readiness-sprint' },
+          {
+            name: 'Readiness Sprint Overview',
+            href: '/docs/getting-started/readiness-sprint',
+            description:
+              'A Readiness Sprint turns a discovery call into a clear plan: what’s included, where the gaps are, and what to do first.',
+          },
           { name: 'What to Expect', href: '/docs/getting-started/expectations' },
         ],
       },
@@ -432,6 +455,7 @@ export const appText = {
         title: 'Compliance Operations',
         description: 'Ongoing compliance management and operations cadence',
         links: [
+          // TODO: Reword the Compliance Ops (Ops Cadence) page to better align with our scope.
           { name: 'Ops Cadence Overview', href: '/docs/ops/cadence' },
           { name: 'Change Management', href: '/docs/ops/change-management' },
           { name: 'Evidence Collection', href: '/docs/ops/evidence' },
@@ -500,6 +524,66 @@ export const appText = {
         { name: 'Scope & Data Flows', href: '/docs/pci-dss/scope' },
         { name: 'Gap Assessment', href: '/docs/pci-dss/gap-assessment' },
       ],
+    },
+    readinessSprintOverview: {
+      headings: {
+        whatThisCovers: 'What you’ll get',
+        howToUseIt: 'How the Readiness Sprint works',
+      },
+      whatThisCovers: {
+        body: 'We start with a discovery call. You get a short write-up that tells you what’s included, where the gaps are, and what to do first.',
+        items: [
+          'What you’re being asked for (SOC 2, PCI DSS, ISO) and what “done” looks like.',
+          'What’s included: systems, data flows, and vendors.',
+          'Where the gaps are today.',
+          'What to do first: prioritized next steps (controls + evidence).',
+        ],
+      },
+      howToUseIt: {
+        intro: 'Here’s the flow from the discovery call to the final write-up.',
+        items: [
+          'Discovery call — You tell us what you’re being asked for, and we walk through your product and data flows.',
+          'Quick follow-up — We gather a few details to confirm what’s included (systems, vendors, sensitive data flows).',
+          'Analysis — We map what’s included to what you need for SOC 2, PCI DSS, or ISO.',
+          'Write-up — You get a short write-up and a prioritized next-step list.',
+        ],
+      },
+      cta: {
+        heading: 'Want a Readiness Sprint overview for your environment?',
+        body: 'Schedule a discovery call and we’ll explain if the Readiness Sprint is the right starting point, and what your write-up would include.',
+      },
+    },
+    opsCadenceOverview: {
+      headings: {
+        whatThisCovers: 'What Compliance Ops covers',
+        howToUseIt: 'How to use this cadence',
+      },
+      whatThisCovers: {
+        body:
+          'Compliance Ops is a continuous operating model—not a one-time “get ready for audit” project. The goal is to keep your controls accurate as your product and vendors change, while maintaining an evidence system that stays buyer- and auditor-ready.',
+        items: [
+          'Control ownership and accountability (who owns what, and how it is verified).',
+          'Operationalizing controls: turning requirements into recurring reviews, approvals, and documented routines.',
+          'Continuous evidence readiness (audit/buyer-ready artifacts maintained over time).',
+          'Change-triggered compliance updates tied to releases, vendor onboarding, incidents, and org changes.',
+          'Exceptions and risk tracking so “real life” doesn’t break your control story.',
+        ],
+      },
+      howToUseIt: {
+        intro:
+          'Use this guide as a blueprint for running ongoing compliance management. It is written from a compliance standpoint: how to define controls, assign ownership, and sustain evidence—without requiring your team to become full-time paperwork.',
+        items: [
+          'Set the baseline — Confirm scope boundaries, control statements, control owners, and the evidence sources you will rely on.',
+          'Translate controls into routines — For each control, define the operational steps, frequency, and “proof of performance” (what evidence exists, where it lives, and who reviews it).',
+          'Run the recurring cadence — Execute monthly/quarterly tasks, review exceptions, and keep policies and narratives aligned to how the business actually operates.',
+          'Tie compliance to change — When product, vendors, or processes change, update the control narrative and evidence plan so the control remains true.',
+          'Package evidence continuously — Maintain an evidence library that makes questionnaires, renewals, and audits pull-from-system instead of scramble.',
+        ],
+      },
+      cta: {
+        heading: 'Need help running ongoing Compliance Ops?',
+        body: 'We can help you stand up the compliance operating model, tailor controls to your actual workflows, and run the cadence with your owners—so controls and evidence stay continuously ready.',
+      },
     },
   },
 
@@ -600,90 +684,23 @@ export const appText = {
     priceUnit: '',
   },
 
-  // Showcase Page
+  // Showcase Page — add real entries to `showcases`; each `href` must be `/showcase/<slug>` and match `app/showcase/[slug]`
   showcase: {
     header: {
       title: 'Client Success Stories',
-      description: 'See how leading companies built their control environment with Meridian S&O—SOC 2, PCI DSS, and ISO outcomes.',
+      description:
+        'Case studies will appear here as we publish them. Each story outlines scope, frameworks, and outcomes from real engagements.',
     },
     categories: ['All', 'B2B SaaS', 'Fintech', 'Startups', 'Mid-Market', 'Enterprise'],
-    showcases: [
-      {
-        company: 'PayFlow SaaS',
-        category: 'B2B SaaS',
-        tagline: 'Payment orchestration',
-        description: 'Achieved SOC 2 Type II in 90 days after we scoped their cardholder data environment and aligned controls to their actual architecture. Ongoing TrustOps keeps evidence current for enterprise buyers.',
-        metrics: [
-          { label: 'Time to Certification', value: '90 days' },
-          { label: 'Certification', value: 'SOC 2 Type II' },
-          { label: 'Ops Cadence', value: 'Active' },
-        ],
-        href: '/showcase/payflow',
-      },
-      {
-        company: 'Nexus Fintech',
-        category: 'Fintech',
-        tagline: 'Banking infrastructure',
-        description: 'PCI DSS readiness for bank partnership: SAQ determination, gap assessment, and evidence preparation scoped to their tokenization model. Passed partner security review in 60 days.',
-        metrics: [
-          { label: 'Framework', value: 'PCI DSS' },
-          { label: 'Partner Review', value: '60 days' },
-          { label: 'Scope', value: 'CDE defined' },
-        ],
-        href: '/showcase/nexus-fintech',
-      },
-      {
-        company: 'ScaleHealth',
-        category: 'Mid-Market',
-        tagline: 'Healthcare SaaS',
-        description: 'Control architecture and SOC 2 readiness for a growing healthcare SaaS. We mapped data flows, defined scope, and delivered a 90-day roadmap—then supported audit prep.',
-        metrics: [
-          { label: 'Roadmap', value: '90 days' },
-          { label: 'Certification', value: 'SOC 2 Type I' },
-          { label: 'Focus', value: 'Scope first' },
-        ],
-        href: '/showcase/scalehealth',
-      },
-      {
-        company: 'StackSync',
-        category: 'B2B SaaS',
-        tagline: 'Enterprise SaaS',
-        description: 'Completed Readiness Sprint and achieved SOC 2 Type I. Established ongoing compliance ops cadence aligned to product release cycles and enterprise questionnaire demand.',
-        metrics: [
-          { label: 'Sprint Duration', value: '30 days' },
-          { label: 'SOC 2 Type', value: 'Type I' },
-          { label: 'Ops Cadence', value: 'Active' },
-        ],
-        href: '/showcase/stacksync',
-      },
-      {
-        company: 'EduSec',
-        category: 'Startups',
-        tagline: 'EdTech platform',
-        description: 'Scoped control environment for an early-stage EdTech facing enterprise RFPs. Delivered defensible artifact set and passed customer security reviews without over-investing in frameworks.',
-        metrics: [
-          { label: 'Artifacts', value: '25+' },
-          { label: 'Security Reviews', value: '100% Pass' },
-          { label: 'Approach', value: 'Scope-first' },
-        ],
-        href: '/showcase/edusec',
-      },
-      {
-        company: 'RetailOps',
-        category: 'Enterprise',
-        tagline: 'Retail technology',
-        description: 'ISO 27001 control mapping and vendor risk program design for a large retailer. Compliance stays operational through quarterly reviews and evidence cadence.',
-        metrics: [
-          { label: 'Framework', value: 'ISO 27001' },
-          { label: 'Vendor Program', value: 'Active' },
-          { label: 'Governance', value: 'Quarterly' },
-        ],
-        href: '/showcase/retailops',
-      },
-    ],
+    showcases: [] as ShowcaseCaseStudy[],
+    emptyState: {
+      title: 'Case studies coming soon',
+      description:
+        'We are preparing client success stories to share here. If you want to discuss outcomes for your scope, start with a discovery call.',
+    },
     cta: {
       title: 'Ready to build your control environment?',
-      description: 'Join these companies. We start with scope—then framework, then audit.',
+      description: 'Let\'s have a scoping conversation today.',
       primary: 'Schedule a Discovery Call',
       primaryHref: '/contact#schedule-call',
     },

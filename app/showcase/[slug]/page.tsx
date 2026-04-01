@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import ScheduleCallButton from '@/components/ScheduleCallButton'
-import { appText } from '@/appText'
+import { appText, type ShowcaseCaseStudy } from '@/appText'
 
-type ShowcaseEntry = (typeof appText.showcase.showcases)[number] & {
+type ShowcaseEntry = ShowcaseCaseStudy & {
   slug: string
 }
 
